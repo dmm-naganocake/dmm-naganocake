@@ -1,0 +1,20 @@
+<header>
+  <nav class="navbar navbar-expand" style="background-color: #add8e6;"> 
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>Komugi</span></a>
+        <ul class="navbar-nav ml-auto">
+          <% if customer_signed_in? %>
+            <li><%= link_to " マイページ", customers_my_page_path, class: "header-button btn text-light" %></li>
+            <li><%= link_to " 商品一覧", items_path, class:"header-button btn text-light" %></li>
+            <li><%= link_to " カート", cart_items_path, class:"header-button btn text-light" %></li>
+            <li><%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class:"header-button btn text-light" %></li>
+          <% else %>
+            <li><%= link_to " About", about_path, class:"header-button btn text-light" %></li>
+            <li><%= link_to " 商品一覧", items_path, class:"header-button btn text-light" %></li>
+            <li><%= link_to " 新規登録", new_customer_registration_path, class:"header-button btn text-light" %></li>
+            <li><%= link_to " ログイン", new_customer_session_path, class:"header-button btn text-light" %></li>
+          <% end %>
+        </ul>
+    </div>
+  </nav>
+</header>
