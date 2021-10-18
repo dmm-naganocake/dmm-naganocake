@@ -7,7 +7,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    
+    @order = Order.new(order_params)
+    p @order
+    @order.save
+    redirect_to request.referer
   end
 
   def finish
