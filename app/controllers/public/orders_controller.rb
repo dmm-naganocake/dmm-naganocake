@@ -7,7 +7,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    
+    @order = Order.new(order_params)
+    p @order
+    @order.save
+    redirect_to request.referer
   end
 
   def finish
@@ -18,7 +21,7 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-  
+
   private
   def order_params
     params.require(:order).permit(:postal_code,:address,:name,:payment_method,:status)
