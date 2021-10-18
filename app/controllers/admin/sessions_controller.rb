@@ -24,16 +24,16 @@ class Admin::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
-  
+
   protected
     def after_sign_in_path_for(resource)
       admin_root_path
     end
 
-# サインアウト後の遷移先を修正
+# サインアウト後の遷移先を修正する
     def after_sign_out_path_for(resource)
-      admin_sign_in_path
+      admin_session_path
     end
 
 end
+
