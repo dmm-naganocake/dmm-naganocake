@@ -1,24 +1,36 @@
 <h1>Public::Items#show</h1>
 <p>Find me in app/views/public/items/show.html.erb</p>
-<div class="container">
-  <div class="row">
-    <div class="col-3">
-      <% @genres.each do |genre| %>
-      <%= genre.name %>
-      <% end %>
+<main>
+
+  <div class="item_visual">
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <% @genres.each do |genre| %>
+          <%= genre.name %>
+          <% end %>
+        </div>
+
+        <div class="col-5">
+          <div>
+          <%= attachment_image_tag @item,:image,:fill,500,350,format: 'jpeg', fallback: "no-image.jpg" %>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="itemshow">
+            <h2 class="itemname"><%= @item.name %></h2>
+            <h3><%= @item.introduction %></h3>
+            <h5>￥<%= @item.price %>（税込み）</h5>
+            <%= form_with model: @cart_item,local: true do |f| %>
+              <%= f.select :amount,[1,2,3,4,5,6,7,8,9,10],include_blank: "個数選択" %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.submit 'カートに入れる',class:"item_cart btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-6">
-      <%= attachment_image_tag @item,:image,:fill,500,350,format: 'jpeg', fallback: "no-image.jpg" %>
-     
-    </div>
-    <p><%= @item.name %> </p>
-    <p><%= @item.introduction %> </p>
-    <p><%= @item.price %> </p>
-    <%= form_with model: @cart_item,local: true do |f| %>
-      <%= f.select :amount,[1,2,3,4,5,6,7,8,9,10],include_blank: "個数選択" %>
-      <%= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.submit 'カートに入れる',class:"btn btn-success" %>
-    <% end %>
-    
   </div>
-</div>
+</main>
+
