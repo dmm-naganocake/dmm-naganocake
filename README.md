@@ -24,7 +24,7 @@ DMM WEBCAMPのチーム開発課題です。
 
 ### 言語とフレームワーク
 * Ruby2.6.3
-* Rails5.2.5
+* Rails5.2.6
 * HTML5
 * CSS3
 * JQuery
