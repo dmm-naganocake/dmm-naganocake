@@ -83,7 +83,8 @@ class Public::OrdersController < ApplicationController
     #   end
     # end
     @order =Order.create(order_params)
-    redirect_to customers_my_page_path
+    render :finish
+    # なぜredirect_toだとうまくいかない？
 
   end
 
