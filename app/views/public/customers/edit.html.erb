@@ -1,2 +1,24 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-4 mt-3">
+
+      <h4>会員情報編集</h4>
+
+      <%= form_with model:@customer, local: true do |f| %>
+
+        <div class="form-row">
+          <%= f.label "氏名" %>
+          <%= f.text_field :last_name, class: "col-3 form-control", placeholder: "0000000" %>
+          <%= f.text_field :first_name, class: "col-3 form-control", placeholder: "0000000" %>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit '新規登録',class: "btn btn-success rounded-pill mt-3" %>
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
