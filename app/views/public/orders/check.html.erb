@@ -1,7 +1,4 @@
-<%= @order.postal_code %>
-<%= @order.address %>
-<%= @order.name %>
-<%= @order.payment_method_i18n %>
+
 <h1>注文情報確認画面</h1>
 
 <%= form_with model: @order,url: orders_path, local: true do |f| %>
@@ -18,3 +15,35 @@
 
   <%= f.submit '注文を確定する',class: "btn btn-success rounded-pill mt-3" %>
 <% end %>
+
+<div class ="container">
+  <div class ="row">
+    <div class ="col">
+      <h5>注文情報確認</h5>
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <p>支払い方法</p>
+        <%= @order.payment_method_i18n %>
+      </div>
+      <p>お届け先</p>
+        <%= @order.postal_code %>
+        <%= @order.address %>
+        <%= @order.name %>
+    </div>
+  </div>
+</div>
