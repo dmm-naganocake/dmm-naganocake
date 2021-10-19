@@ -62,6 +62,7 @@ class Public::OrdersController < ApplicationController
         OrderDetails.create()
       end
     end
+
   end
 
   def finish
@@ -76,6 +77,7 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:postal_code,:address,:name,:payment_method,:shipping_cost,:total_payment,:status,:customer_id)
+
   end
 
 end
