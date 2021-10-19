@@ -7,6 +7,11 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer = current_customer
+    @customer.is_deleted = true
+    @customer.save
+    reset_session
+    redirect_to root_path
   end
 
   def edit
