@@ -51,10 +51,18 @@ class Public::OrdersController < ApplicationController
           @order.postal_code = @selected_address.postal_code
           @order.address = @selected_address.address
           @order.name = @selected_address.name
+          @order.shipping_cost = 800
+          @order.status = 0
+          @order.total_payment = 5000
+          @order.payment_method = params[:order][:payment_method]
         elsif params[:order][:address_number] == '2'
           @order.postal_code = params[:order][:postal_code]
           @order.address = params[:order][:address]
           @order.name = params[:order][:name]
+          @order.shipping_cost = 800
+          @order.status = 0
+          @order.total_payment = 5000
+          @order.payment_method = params[:order][:payment_method]
         else
         end
   end
