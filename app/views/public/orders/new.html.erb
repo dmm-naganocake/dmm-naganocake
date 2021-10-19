@@ -30,7 +30,7 @@
 
         <%= f.radio_button :address_number, "1" %>
         <%= f.label :address_number_1, '登録済みの住所から選択' %><br>
-          <%= f.select :address_id, Address.all.map { |address| [address.postal_code + address.address + address.name] }, :include_blank => "選択してください" %><br><br>
+          <%= f.select :address_id, current_customer.addresses.map { |address| [address.postal_code + address.address + address.name] }, :include_blank => "選択してください" %><br><br>
 
         <%= f.radio_button :address_number, "2" %>
         <%= f.label :address_number_2, '新しいお届け先' %><br>

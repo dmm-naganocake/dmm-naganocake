@@ -42,6 +42,10 @@ class Public::OrdersController < ApplicationController
           @order.postal_code = current_customer.postal_code
           @order.address = current_customer.address
           @order.name = current_customer.last_name + current_customer.first_name
+          @order.shipping_cost = 800
+          @order.status = 0
+          @order.total_payment = 5000
+          @order.payment_method = params[:order][:payment_method]
         elsif params[:order][:address_number] == '1'
           @selected_address = Address.find(params[:order][:address_id])
           @order.postal_code = @selected_address.postal_code
@@ -56,12 +60,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @cart_items = CartItem.where(customer_id: current_customer.id)
-    if @order =Order.create(order_params)
-      @cart_items.each do |cart_item|
-        OrderDetails.create()
-      end
-    end
+    # @cart_items = CartItem.where(customer_id: current_customer.id)
+    # if @order =Order.create(order_params)
+    #   @cart_items.each do |cart_item|
+    #     OrderDetails.create()
+    #   end
+    # end
+    @order =Order.create(order_params)
+    redirect_to customers_my_page_path
 
   end
 
