@@ -1,24 +1,57 @@
 <div class="container">
   <div class="row">
-    <div class="col-4 mt-3">
+    <div class="col-6 mt-3">
 
-      <h4>会員情報編集</h4>
+      <h4 class="mb-4">会員情報編集</h4>
 
-      <%= form_with model:@customer, local: true do |f| %>
+      <%= form_with model: @customer, url: customers_path, local: true do |f| %>
 
-        <div class="form-row">
-          <%= f.label "氏名" %>
-          <%= f.text_field :last_name, class: "col-3 form-control", placeholder: "0000000" %>
-          <%= f.text_field :first_name, class: "col-3 form-control", placeholder: "0000000" %>
-        </div>
+        <table class="table table-borderless">
+          <tr>
+            <td><%= f.label "氏名" %></td>
+            <td><%= f.text_field :last_name, class: "form-control" %></td>
+            <td><%= f.text_field :first_name, class: "form-control" %></td>
+          </tr>
 
+          <tr>
+            <td><%= f.label "フリガナ" %></td>
+            <td><%= f.text_field :last_name_kana, class: "form-control" %></td>
+            <td><%= f.text_field :first_name_kana, class: "form-control" %></td>
+          </tr>
 
-        <div class="actions">
-          <%= f.submit '新規登録',class: "btn btn-success rounded-pill mt-3" %>
-        </div>
+          <tr>
+            <td><%= f.label "郵便番号" %></td>
+            <td><%= f.text_field :postal_code, class: "form-control" %></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label "住所" %></td>
+            <td colspan="2"><%= f.text_field :address, class: "form-control" %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label "電話番号" %></td>
+            <td><%= f.text_field :phone_number, class: "form-control" %></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label "メールアドレス" %></td>
+            <td><%= f.text_field :email, class: "form-control" %></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit '編集内容を保存',class: "btn btn-success rounded-pill mt-3" %></td>
+            <td><%= f.submit '退会する',class: "btn btn-danger rounded-pill mt-3" %></td>
+          </tr>
+        </table>
 
       <% end %>
 
     </div>
   </div>
 </div>
+
