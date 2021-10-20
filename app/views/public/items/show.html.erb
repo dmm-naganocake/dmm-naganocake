@@ -5,13 +5,11 @@
   <div class="item_visual">
     <div class="container">
       <div class="row">
-        <div class="col-3">
-          <% @genres.each do |genre| %>
-          <%= genre.name %>
-          <% end %>
+        <div class="col-2">
+          <%= render "public/items/genre", genres: @genres %>
         </div>
 
-        <div class="col-5">
+        <div class="col-5 offset-1">
           <div>
           <%= attachment_image_tag @item,:image,:fill,500,350,format: 'jpeg', fallback: "no-image.jpg" %>
           </div>
