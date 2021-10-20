@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # get 'genres/show'
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about"
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
     # id付
 
     resources :cart_items,only:[:index,:create,:destroy,:update]
-    delete "/cart_items" => "cart_items#all_destroy"
+    delete "/cart_items" => "cart_items#all_destroy", as: :cart_items_all_destroy
 
     resources :orders,only:[:new,:create,:index,:show]
 
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
     patch "/customers/withdraw" => "customers#withdraw"
 
     resources :addresses,only:[:new,:create,:destroy,:edit,:update]
+    
+    resources :genres,only:[:show]
 
   end
 
