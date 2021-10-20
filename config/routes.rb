@@ -8,10 +8,12 @@ Rails.application.routes.draw do
     # id付
 
     resources :cart_items,only:[:index,:create,:destroy,:update]
-    delete "/cart_items" => "cart_items#all_destroy"
+    delete "/cart_items" => "cart_items#all_destroy", as: :cart_items_all_destroy
 
     resources :orders,only:[:new,:create,:index,:show]
-    post "/orders" =>"orders#check"
+
+    post "/orders/check" =>"orders#check"
+
     get "/orders/finish" => "orders#finish"
 
     resource :customers,only:[:edit,:update]
@@ -32,7 +34,9 @@ Rails.application.routes.draw do
 
     resources :customers,only:[:index,:show,:edit,:update]
 
+
     resources :orders,only:[:index,:show,:update]
+
 
     resources :order_details,only:[:update]
 
