@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # get 'genres/show'
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about"
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
     patch "/customers/withdraw" => "customers#withdraw"
 
     resources :addresses,only:[:new,:create,:destroy,:edit,:update]
+    
+    resources :genres,only:[:show]
 
   end
 
