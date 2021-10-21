@@ -26,13 +26,13 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root to: "orders#index"
+    root to: "homes#top"
 
     resources :items,only:[:index,:new,:create,:show,:edit,:update]
 
     resources :genres,only:[:index,:create,:edit,:update]
 
-    resources :customers,only:[:index,:show,:edit,:update]
+    resources :customers,only:[:show,:edit,:update]
 
 
     resources :orders,only:[:index,:show,:update]
