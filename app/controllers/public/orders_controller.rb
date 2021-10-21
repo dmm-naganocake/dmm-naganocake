@@ -47,6 +47,16 @@ class Public::OrdersController < ApplicationController
   def create
 
     @order =Order.create(order_params)
+    current_customer.cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.item_id =cart_item.item.id
+      @order_detail.price =cart_item.item.price
+      @order_detail.amount =cart_item.amount
+      # @order_detail.making_status =cart_item.item.id
+      @order_detail.order_id =@order.id
+      @order_detail.save
+      cart_item.destroy
+    end
     render :finish
     # なぜredirect_toだとうまくいかない？
 
@@ -56,6 +66,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+   @orders = Order.where(customer_id: current_customer.id)
+  # @order.items = current_customer.items.all
   end
 
   def show
