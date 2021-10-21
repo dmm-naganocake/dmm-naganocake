@@ -8,6 +8,7 @@
         <div class="col-md-3">
           <%= render "public/items/genre", genres: @genres %>
         </div>
+
         <div class="col-md-9">
           <div class="row">
         <h1>商品一覧</h1>
@@ -17,7 +18,7 @@
           <%= link_to item.name,item_path(item) %>
           </div>
           <% end %>
-          
+
           </div>
         </div>
       </div>
