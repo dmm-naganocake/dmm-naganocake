@@ -59,6 +59,8 @@ class Public::OrdersController < ApplicationController
     end
     render :finish
     # なぜredirect_toだとうまくいかない？
+    # ログインしてる顧客のカートアイテムを回してorderに紐づいてるorder_datailに無いカラムを定義する
+    # それをsaveしてindexの@ordersはorder_detailに紐ついてるのでeach文の入れ子によって保存されたカラムを呼び出せている
 
   end
 
@@ -71,6 +73,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    # @cart_item = CartItem.find(params[:id])
   end
 
   private
