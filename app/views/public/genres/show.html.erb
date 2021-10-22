@@ -14,7 +14,7 @@
           <% @genre.items.each do |item| %>
           <tr>
             <td>
-              <%= attachment_image_tag item.image,:image,:fill,500,350,format: 'jpeg', fallback: "no-image.jpg",size:'150x100' %><br>
+              <%= attachment_image_tag item,:image,:fill,500,350,format: 'jpeg', fallback: "no-image.jpg",size:'150x100' %><br>
               <%= link_to item.name,item_path(item) %>
             </td>
             <td><%= item.price %></td>
