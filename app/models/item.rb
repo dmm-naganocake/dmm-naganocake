@@ -2,10 +2,7 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
-<<<<<<< HEAD
 
-=======
->>>>>>> ef19c338049ce0d473f07018753a0165b60c5615
 
   attachment :image
 
