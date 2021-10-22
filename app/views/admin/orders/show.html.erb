@@ -48,7 +48,11 @@
           <td><%= order_detail.amount %></td>
           <td><%= order_detail.item.price * order_detail.amount %></td>
           <td>
-            <%= order_detail.making_status_i18n %>
+            <%= form_with url: admin_order_detail_path(order_detail), model: order_detail, local: true do |f| %>
+              <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |k| [I18n.t("enums.order_detail.making_status.#{k}"), k] } %>
+              <!--tはtranslateの略-->
+            <%= f.submit "更新", class: "btn btn-success" %>
+            <% end %>
           </td>
         </tr>
         <% end %>
