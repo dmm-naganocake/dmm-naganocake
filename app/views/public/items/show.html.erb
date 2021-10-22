@@ -6,9 +6,7 @@
     <div class="container">
       <div class="row">
         <div class="col-3">
-          <% @genres.each do |genre| %>
-          <%= genre.name %>
-          <% end %>
+          <%= render "public/items/genre", genres: @genres %>
         </div>
 
         <div class="col-5">
