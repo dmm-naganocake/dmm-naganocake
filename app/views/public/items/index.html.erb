@@ -5,15 +5,21 @@
   <div class="item_visual">
     <div class="container">
       <div class="row">
-        <div class="col-2">
+        <div class="col-md-3">
           <%= render "public/items/genre", genres: @genres %>
         </div>
 
-        <div class="col-10">
-          <h1>商品一覧</h1>
-          <p><%= link_to "モンブラン", item_path(4) %></p>
-          <p><%= link_to "洋梨とチーズのタルト", item_path(5) %></p>
-          <p><%= link_to "フルーツタルト", item_path(6) %></p>
+        <div class="col-md-9">
+          <div class="row">
+        <h1>商品一覧</h1>
+          <% @items.each do |item| %>
+            <div class="col-md-3">
+          <%= attachment_image_tag item,:image,:fill,500,350,format: 'jpeg', fallback: "no-image.jpg",size:'150x100' %><br>
+          <%= link_to item.name,item_path(item) %>
+          </div>
+          <% end %>
+
+          </div>
         </div>
       </div>
     </div>
