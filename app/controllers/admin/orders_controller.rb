@@ -8,6 +8,7 @@ class Admin::OrdersController < ApplicationController
     @order_details.each do |order_item|
       @total_payment += order_item.price * order_item.amount
     end
+    session[:order_id] = params[:id]
   end
 
   def update
