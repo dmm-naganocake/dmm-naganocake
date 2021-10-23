@@ -8,10 +8,14 @@ class Admin::OrderDetailsController < ApplicationController
       @order_detail.order.status = "in_production"
       @order_detail.order.save
     end
-    if @order_detail.making_status == "production_complete"
+
+    @order = Order.find(session[:order_id])
+    @order_details = @order.order_details
+    if @order_details.where(making_status: "production_complete").count == @order_details.count
       @order_detail.order.status = "preparing_delivery"
       @order_detail.order.save
     end
+
     redirect_to request.referer
   end
 
