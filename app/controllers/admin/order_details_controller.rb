@@ -13,11 +13,12 @@ class Admin::OrderDetailsController < ApplicationController
       # 制作中
       @order_detail.order.save
     end
-    
+
     if @order_details.where(making_status: "production_complete").count == @order_details.count
       @order_detail.order.status = "preparing_delivery"
       @order_detail.order.save
     end
+
     redirect_to request.referer
   end
 
